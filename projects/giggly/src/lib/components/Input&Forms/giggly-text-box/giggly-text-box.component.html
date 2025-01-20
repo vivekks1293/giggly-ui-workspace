@@ -1,0 +1,13 @@
+<div class="text-input">
+    <label *ngIf="label" [class.disabled]="disabled">{{ label }}</label>
+    <input
+      [type]="type"
+      [placeholder]="placeholder"
+      [(ngModel)]="value"
+      [disabled]="disabled"
+      (input)="onInputChange($event)"
+      [class.invalid]="!isValid"
+    />
+    <p class="error-message" *ngIf="!isValid">{{ errorMessage }}</p>
+  </div>
+  

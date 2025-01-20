@@ -1,0 +1,93 @@
+.button-group {
+    display: inline-flex;
+    border: 1px solid #ddd; /* Add a border to the group */
+    border-radius: 5px; /* Rounded edges for the group */
+    overflow: hidden; /* Ensure no parts of buttons extend outside the group */
+  
+    &.horizontal {
+      flex-direction: row;
+    }
+  
+    &.vertical {
+      flex-direction: column;
+    }
+  
+    button {
+      border: none; /* Remove individual button borders */
+      flex: 1; /* Make buttons responsive in width */
+      text-align: center;
+      background-color: var(--button-bg-color, #f8f9fa); /* Default background */
+      color: var(--button-text-color, #000); /* Default text color */
+      transition: background-color 0.3s ease, color 0.3s ease;
+  
+      &:not(:last-child) {
+        border-right: 1px solid #ddd; /* Add a divider between buttons */
+      }
+  
+      &:hover:not(:disabled) {
+        transform: scale(1.05);
+        background-color: var(--primary-color-hover, #e0e0e0);
+      }
+  
+      &:active:not(:disabled) {
+        background-color: var(--primary-color, #d6d6d6);
+      }
+  
+      &:disabled {
+        background-color: var(--primary-color-disabled, #f2f2f2);
+        color: #a5a5a5;
+        cursor: not-allowed;
+      }
+  
+      i {
+        font-size: 16px;
+        margin-right: 5px;
+      }
+  
+      /* Primary Button */
+      &.primary {
+        background-color: var(--primary-color, #4caf50); /* Default green */
+        color: white;
+  
+        &:hover {
+          background-color: var(--primary-color-hover, #45a049); /* Darker green */
+        }
+  
+        &:disabled {
+          background-color: var(--primary-color-disabled, #c8e6c9); /* Light green */
+          color: #a5d6a7;
+        }
+      }
+  
+      /* Secondary Button */
+      &.secondary {
+        background-color: var(--secondary-color, #2196f3); /* Default blue */
+        color: white;
+  
+        &:hover {
+          background-color: var(--secondary-color-hover, #1e88e5); /* Darker blue */
+        }
+  
+        &:disabled {
+          background-color: var(--secondary-color-disabled, #bbdefb); /* Light blue */
+          color: #90caf9;
+        }
+      }
+  
+      /* Danger Button */
+      &.danger {
+        background-color: var(--danger-color, #f44336); /* Default red */
+        color: white;
+  
+        &:hover {
+          background-color: var(--danger-color-hover, #e53935); /* Darker red */
+        }
+  
+        &:disabled {
+          background-color: var(--danger-color-disabled, #ffcdd2); /* Light red */
+          color: #ef9a9a;
+        }
+      }
+    }
+  }
+  

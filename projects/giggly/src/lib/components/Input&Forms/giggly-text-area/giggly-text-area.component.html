@@ -1,0 +1,13 @@
+<div class="giggly-textarea">
+    <label *ngIf="label" [class.disabled]="disabled">{{ label }}</label>
+    <textarea
+      [(ngModel)]="value"
+      [placeholder]="placeholder"
+      [rows]="rows"
+      [disabled]="disabled"
+      (input)="onInput($event)"
+      [class.invalid]="!isValid"
+    ></textarea>
+    <p class="error-message" *ngIf="!isValid">{{ errorMessage }}</p>
+  </div>
+  

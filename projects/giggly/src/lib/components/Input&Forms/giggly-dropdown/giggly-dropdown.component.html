@@ -1,0 +1,30 @@
+<div class="giggly-select" [class.disabled]="disabled">
+    <div class="select-box" (click)="toggleDropdown()">
+      <span *ngIf="!selectedValue">{{ placeholder }}</span>
+      <span *ngIf="selectedValue && !multiple">{{ displayField ? selectedValue[displayField] : selectedValue }}</span>
+      <span *ngIf="multiple && selectedValue?.length">{{ selectedValue.length }} selected</span>
+      <span class="arrow">▼</span>
+    </div>
+  
+    <div *ngIf="isOpen" class="dropdown">
+      <input 
+        *ngIf="searchEnabled" 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        (input)="filterOptions()" 
+        placeholder="Search..." 
+        class="search-box"
+      />
+  
+      <ul>
+        <li 
+          *ngFor="let option of filteredOptions" 
+          (click)="selectOption(option)"
+          [class.selected]="isSelected(option)"
+        >
+          {{ displayField ? option[displayField] : option }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

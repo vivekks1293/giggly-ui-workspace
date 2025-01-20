@@ -1,0 +1,19 @@
+<div class="giggly-radio-group" [class]="direction">
+    <label 
+      *ngFor="let option of options" 
+      class="giggly-radio-label" 
+      [class.disabled]="disabled"
+    >
+      <input
+        type="radio"
+        [name]="name"
+        [value]="option.value"
+        [checked]="option.value === selectedValue"
+        [disabled]="disabled"
+        (change)="selectOption(option.value)"
+      />
+      <span class="giggly-radio-check"></span>
+      {{ option.label }}
+    </label>
+  </div>
+  

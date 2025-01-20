@@ -1,0 +1,14 @@
+<div class="giggly-slider" [class.disabled]="disabled">
+    <label>{{ label }}</label>
+    <input 
+      type="range" 
+      [min]="min" 
+      [max]="max" 
+      [step]="step" 
+      [(ngModel)]="value"
+      (input)="updateValue($event)" 
+      [disabled]="disabled"
+    />
+    <span class="slider-value">{{ value }}</span>
+  </div>
+  

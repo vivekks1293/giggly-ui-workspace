@@ -1,0 +1,10 @@
+<div class="giggly-checkbox" [class.disabled]="disabled">
+    <input
+      type="checkbox"
+      id="giggly-checkbox"
+      [checked]="checked"
+      [disabled]="disabled"
+      (change)="toggleCheck()"
+    />
+    <label for="giggly-checkbox">{{ label }}</label>
+  </div>

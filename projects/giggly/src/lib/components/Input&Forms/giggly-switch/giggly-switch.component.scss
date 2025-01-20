@@ -1,0 +1,48 @@
+.giggly-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Comic Sans MS', sans-serif;
+    user-select: none;
+  
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  
+    .toggle-switch {
+      width: 50px;
+      height: 26px;
+      background: var(--toggle-off-bg, #ccc);
+      border-radius: 50px;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  
+      &.checked {
+        background: var(--toggle-on-bg, #4caf50);
+      }
+  
+      .toggle-handle {
+        width: 22px;
+        height: 22px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        transition: all 0.3s ease;
+      }
+  
+      &.checked .toggle-handle {
+        left: calc(100% - 24px);
+      }
+    }
+  
+    .toggle-label {
+      margin-left: 10px;
+      font-size: 16px;
+      color: var(--text-label-color, #333);
+    }
+  }
+  

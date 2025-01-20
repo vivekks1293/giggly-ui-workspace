@@ -1,0 +1,31 @@
+<div class="split-button">
+    <!-- Primary Button -->
+    <button
+      [class]="variant"
+      [disabled]="disabled"
+      (click)="onClick.emit($event)"
+    >
+      {{ label }}
+    </button>
+  
+    <!-- Dropdown Toggle -->
+    <button
+      [class]="variant"
+      [disabled]="disabled"
+      class="dropdown-toggle"
+      (click)="toggleDropdown()"
+    >
+      ▼
+    </button>
+  
+    <!-- Dropdown Menu -->
+    <ul *ngIf="isOpen" class="dropdown-menu">
+      <li
+        *ngFor="let option of options"
+        (click)="selectOption(option.action)"
+      >
+        {{ option.label }}
+      </li>
+    </ul>
+  </div>
+  

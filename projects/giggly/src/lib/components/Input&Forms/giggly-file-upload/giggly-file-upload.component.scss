@@ -1,0 +1,53 @@
+.giggly-file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Comic Sans MS', sans-serif;
+    color: var(--text-color, #333);
+  
+    label {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  
+    .drop-area {
+      width: 100%;
+      max-width: 400px;
+      padding: 30px;
+      border: 2px dashed var(--primary-color, #4caf50);
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+      background: #f9f9f9;
+      cursor: pointer;
+  
+      p {
+        margin: 0;
+        font-size: 16px;
+        color: #777;
+      }
+  
+      button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--primary-color, #4caf50);
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+  
+        &:hover {
+          background-color: var(--primary-color-hover, #45a049);
+        }
+      }
+  
+      &.dragging {
+        border-color: var(--secondary-color, #ff9800);
+        background: #f0f0f0;
+      }
+    }
+  }
+  
