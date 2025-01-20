@@ -1,0 +1,24 @@
+<div class="giggly-file-upload">
+    <label>{{ label }}</label>
+    
+    <div 
+      class="drop-area" 
+      [class.dragging]="isDragging"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave()"
+      (drop)="onDrop($event)"
+    >
+      <p *ngIf="selectedFiles.length === 0">Drag & Drop files here or click the button</p>
+      <p *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} file(s) selected</p>
+      <button type="button" (click)="fileInput.click()">Choose Files</button>
+      <input 
+        #fileInput 
+        type="file" 
+        [multiple]="multiple"
+        [accept]="accept"
+        (change)="handleFileInput($event)"
+        hidden
+      />
+    </div>
+  </div>
+  

@@ -1,0 +1,12 @@
+<div [ngClass]="['button-group', orientation]">
+    <button
+      *ngFor="let button of buttons"
+      [class]="button.variant"
+      [disabled]="button.disabled"
+      [ngClass]="{ 'icon-only': !button.label }"
+    >
+      <i *ngIf="button.icon" [class]="button.icon"></i>
+      <span *ngIf="button.label">{{ button.label }}</span>
+    </button>
+  </div>
+  

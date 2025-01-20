@@ -1,0 +1,55 @@
+.giggly-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Comic Sans MS', sans-serif;
+    user-select: none;
+  
+    input {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary-color, #4caf50);
+      border-radius: 4px;
+      display: inline-block;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+  
+      &:checked {
+        background-color: var(--primary-color, #4caf50);
+        border-color: var(--primary-color, #4caf50);
+        position: relative;
+  
+        &::after {
+          content: '✔';
+          font-size: 16px;
+          font-weight: bold;
+          color: white;
+          position: absolute;
+          left: 4px;
+          top: -2px;
+        }
+      }
+  
+      &:hover {
+        border-color: var(--primary-color-hover, #45a049);
+      }
+  
+      &:disabled {
+        border-color: #ccc;
+        background-color: #f0f0f0;
+        cursor: not-allowed;
+      }
+    }
+  
+    label {
+      font-size: 16px;
+      color: var(--text-label-color, #333);
+    }
+  
+    &.disabled {
+      color: #a5a5a5;
+      cursor: not-allowed;
+    }
+  }
+  

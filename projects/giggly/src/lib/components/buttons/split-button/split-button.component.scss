@@ -1,0 +1,90 @@
+.split-button {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  
+    button {
+      padding: 10px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  
+      &.primary {
+        background-color: var(--primary-color, #4caf50);
+        color: white;
+  
+        &:hover {
+          background-color: var(--primary-color-hover, #45a049);
+        }
+  
+        &:disabled {
+          background-color: var(--primary-color-disabled, #c8e6c9);
+          color: #a5d6a7;
+          cursor: not-allowed;
+        }
+      }
+  
+      &.secondary {
+        background-color: var(--secondary-color, #2196f3);
+        color: white;
+  
+        &:hover {
+          background-color: var(--secondary-color-hover, #1e88e5);
+        }
+  
+        &:disabled {
+          background-color: var(--secondary-color-disabled, #bbdefb);
+          color: #90caf9;
+          cursor: not-allowed;
+        }
+      }
+  
+      &.danger {
+        background-color: var(--danger-color, #f44336);
+        color: white;
+  
+        &:hover {
+          background-color: var(--danger-color-hover, #e53935);
+        }
+  
+        &:disabled {
+          background-color: var(--danger-color-disabled, #ffcdd2);
+          color: #ef9a9a;
+          cursor: not-allowed;
+        }
+      }
+  
+      &.dropdown-toggle {
+        border-left: 1px solid white;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+  
+      li {
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #f4f4f4;
+        }
+      }
+    }
+  }
+  

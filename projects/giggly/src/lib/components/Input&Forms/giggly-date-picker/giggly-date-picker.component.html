@@ -1,0 +1,12 @@
+<div class="giggly-date-picker">
+    <label *ngIf="label">{{ label }}</label>
+    <input 
+      type="date" 
+      [min]="minDate ? getFormattedDate(minDate) : null" 
+      [max]="maxDate ? getFormattedDate(maxDate) : null" 
+      [value]="getFormattedDate(value)"
+      (change)="onDateSelect($event)" 
+      [disabled]="disabled"
+    />
+  </div>
+  

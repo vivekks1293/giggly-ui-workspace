@@ -1,0 +1,7 @@
+<div class="giggly-toggle" [class.disabled]="disabled" (click)="toggleSwitch()">
+    <div class="toggle-switch" [class.checked]="checked">
+      <div class="toggle-handle"></div>
+    </div>
+    <span *ngIf="label" class="toggle-label">{{ label }}</span>
+  </div>
+  
