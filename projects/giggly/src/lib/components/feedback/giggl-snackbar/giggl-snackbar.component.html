@@ -1,0 +1,4 @@
+<div *ngIf="showSnackbar" class="giggly-snackbar">
+    <span class="snackbar-message">{{ message }}</span>
+    <button *ngIf="actionText" class="snackbar-action" (click)="handleAction()">{{ actionText }}</button>
+  </div>

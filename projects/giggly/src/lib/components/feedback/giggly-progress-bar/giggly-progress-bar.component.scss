@@ -1,0 +1,45 @@
+.giggly-progress {
+    font-family: 'Comic Sans MS', sans-serif;
+    text-align: center;
+    &.linear {
+      width: 100%;
+      height: 20px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+      .progress-bar {
+        height: 100%;
+        transition: width 0.4s ease-in-out;
+        border-radius: 10px;
+      }
+    }
+  
+    &.circular {
+      position: relative;
+      display: inline-block;
+  
+      .progress-ring {
+        transform: rotate(-90deg);
+        transform-origin: center;
+      }
+  
+      .progress-ring__circle {
+        fill: none;
+        transition: stroke-dashoffset 0.4s ease-in-out;
+        stroke-linecap: round;
+      }
+  
+      .progress-text {
+        position: absolute;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--primary-color, #4caf50);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  

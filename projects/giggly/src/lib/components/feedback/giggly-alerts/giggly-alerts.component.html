@@ -1,0 +1,7 @@
+<div class="alert-container">
+    <div *ngIf="showAlert" class="giggly-alert" [ngClass]="type">
+      <span class="alert-message">{{ message }}</span>
+      <button *ngIf="dismissible" class="close-btn" (click)="closeAlert()">×</button>
+    </div>
+  </div>
+  
