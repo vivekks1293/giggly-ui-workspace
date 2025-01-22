@@ -12,3 +12,6 @@ export * from './lib/components/Input&Forms/giggly-switch/giggly-switch.componen
 export * from './lib/components/Input&Forms/giggly-slider/giggly-slider.component';
 export * from './lib/components/Input&Forms/giggly-date-picker/giggly-date-picker.component';
 export * from './lib/components/Input&Forms/giggly-file-upload/giggly-file-upload.component';
+export * from './lib/components/feedback/giggly-alerts/giggly-alerts.component';
+export * from './lib/components/feedback/giggl-snackbar/giggl-snackbar.component';
+export * from './lib/components/feedback/giggly-progress-bar/giggly-progress-bar.component';
