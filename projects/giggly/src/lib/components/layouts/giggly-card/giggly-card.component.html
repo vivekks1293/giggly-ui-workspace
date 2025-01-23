@@ -1,0 +1,11 @@
+<div class="giggly-card" 
+     [style.borderColor]="borderColor" 
+     [style.width]="width" 
+     [style.height]="height" 
+     [class.scrollable]="scrollable">
+  <div class="card-header" *ngIf="header">{{ header }}</div>
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+  <div class="card-footer" *ngIf="footer">{{ footer }}</div>
+</div>

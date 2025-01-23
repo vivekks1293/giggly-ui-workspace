@@ -15,3 +15,5 @@ export * from './lib/components/Input&Forms/giggly-file-upload/giggly-file-uploa
 export * from './lib/components/feedback/giggly-alerts/giggly-alerts.component';
 export * from './lib/components/feedback/giggl-snackbar/giggl-snackbar.component';
 export * from './lib/components/feedback/giggly-progress-bar/giggly-progress-bar.component';
+export * from './lib/components/layouts/giggly-card/giggly-card.component';
+export * from './lib/components/layouts/giggly-modal/giggly-modal.component';
