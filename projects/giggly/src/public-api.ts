@@ -17,3 +17,9 @@ export * from './lib/components/feedback/giggl-snackbar/giggl-snackbar.component
 export * from './lib/components/feedback/giggly-progress-bar/giggly-progress-bar.component';
 export * from './lib/components/layouts/giggly-card/giggly-card.component';
 export * from './lib/components/layouts/giggly-modal/giggly-modal.component';
+export * from './lib/components/layouts/giggly-accordian/giggly-accordian.component';
+export * from './lib/components/layouts/giggly-tabs/giggly-tabs.component';
+export * from './lib/components/layouts/giggly-tab/giggly-tab.component';
+export * from './lib/components/layouts/giggly-sidebar/giggly-sidebar.component';
+export * from './lib/components/layouts/giggly-tooltip/giggly-tooltip.component';
+export * from './lib/components/layouts/giggly-divider/giggly-divider.component';

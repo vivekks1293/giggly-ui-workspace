@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+  &.horizontal {
+    border-bottom: var(--divider-thickness, 1px) solid var(--divider-color, black);
+  }
+  &.vertical {
+    border-right: var(--divider-thickness, 1px) solid var(--divider-color, black);
+    height: 100%;
+    width: auto;
+  }
+}

@@ -1,0 +1,6 @@
+<div class="giggly-tooltip-wrapper" (click)="toggleTooltip()">
+  <ng-content></ng-content>
+  <div class="giggly-tooltip" *ngIf="isVisible" [ngClass]="position">
+    {{ content }}
+  </div>
+</div>
