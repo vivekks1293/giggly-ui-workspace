@@ -1,0 +1,11 @@
+<nav class="giggly-breadcrumb">
+    <ul>
+      <li *ngFor="let breadcrumb of breadcrumbs; let i = index; let last = last">
+        <a *ngIf="!last" (click)="handleClick(i, last)">
+          {{ breadcrumb.label }}
+        </a>
+        <span *ngIf="last">{{ breadcrumb.label }}</span>
+      </li>
+    </ul>
+  </nav>
+  
