@@ -1,0 +1,15 @@
+<div class="giggly-tabs" style="width: 100%;">
+    <div class="tab-header">
+      <div 
+        *ngFor="let tab of tabs; let i = index" 
+        class="tab-item" 
+        [class.active]="tab.isActive" 
+        (click)="selectTab(i)">
+        {{ tab.name }}
+      </div>
+    </div>
+    <div class="tab-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  

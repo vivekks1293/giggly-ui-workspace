@@ -1,0 +1,10 @@
+<div class="giggly-accordion">
+    <div class="accordion-header" (click)="toggleAccordion()">
+      <h3>{{ title }}</h3>
+      <span class="toggle-icon">{{ isExpanded ? '▲' : '▼' }}</span>
+    </div>
+    <div class="accordion-content" *ngIf="isExpanded">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  

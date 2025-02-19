@@ -1,0 +1,8 @@
+<div class="giggly-sidebar" [ngClass]="{ 'open': isOpen, 'right': position === 'right' }">
+    <div class="sidebar-header">
+      <h3>Giggly Sidebar</h3>
+      <button class="close-btn" (click)="toggleSidebar()">&times;</button>
+    </div>
+    <ng-content></ng-content>
+  </div>
+  
