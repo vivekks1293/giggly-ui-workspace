@@ -24,3 +24,6 @@ export * from './lib/components/layouts/giggly-sidebar/giggly-sidebar.component'
 export * from './lib/components/layouts/giggly-tooltip/giggly-tooltip.component';
 export * from './lib/components/layouts/giggly-divider/giggly-divider.component';
 export * from './lib/components/navigation/breadcrumb/breadcrumb.component';
+export * from './lib/components/navigation/giggly-stepper/giggly-stepper.component';
+export * from './lib/components/navigation/giggly-navbar/giggly-navbar.component';
+export * from './lib/components/navigation/giggly-navbar-sidebar/giggly-navbar-sidebar.component';
