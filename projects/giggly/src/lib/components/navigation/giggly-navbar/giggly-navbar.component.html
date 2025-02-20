@@ -1,0 +1,18 @@
+<nav class="giggly-navbar" [class.sticky]="sticky">
+    <ul class="navbar-menu">
+      <li *ngFor="let item of menuItems" class="navbar-item">
+        <a (click)="handleMenuClick(item)" [routerLink]="item.route">{{ item.label }}</a>
+        <ul *ngIf="item.children?.length" class="dropdown">
+          <li *ngFor="let child of item.children">
+            <a (click)="handleMenuClick(child)" [routerLink]="child.route">{{ child.label }}</a>
+            <ul *ngIf="child.children?.length" class="dropdown">
+              <li *ngFor="let subChild of child.children">
+                <a (click)="handleMenuClick(subChild)" [routerLink]="subChild.route">{{ subChild.label }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  

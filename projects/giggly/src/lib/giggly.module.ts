@@ -25,11 +25,15 @@ import { GigglySidebarComponent } from '../lib/components/layouts/giggly-sidebar
 import { GigglyTooltipComponent } from '../lib/components/layouts/giggly-tooltip/giggly-tooltip.component';
 import { GigglyDividerComponent } from '../lib/components/layouts/giggly-divider/giggly-divider.component';
 import { BreadcrumbComponent } from '../lib/components/navigation/breadcrumb/breadcrumb.component';
+import { GigglyStepperComponent } from '../lib/components/navigation/giggly-stepper/giggly-stepper.component';
+import { GigglyNavbarComponent } from '../lib/components/navigation/giggly-navbar/giggly-navbar.component';
+import { GigglyNavbarSidebarComponent } from '../lib/components/navigation/giggly-navbar-sidebar/giggly-navbar-sidebar.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 @NgModule({
-  declarations: [BreadcrumbComponent, GigglyDividerComponent, GigglyTooltipComponent, GigglySidebarComponent, GigglyTabComponent, GigglyTabsComponent, GigglyAccordianComponent, GigglyModalComponent, GigglyCardComponent, GigglyProgressBarComponent, GigglSnackbarComponent, GigglyAlertsComponent, GigglyFileUploadComponent, GigglyDatePickerComponent, GigglySliderComponent, GigglySwitchComponent, GigglyDropdownComponent, GigglyRadiobuttonComponent, GigglyCheckboxComponent, GigglyTextAreaComponent, GigglyButtonComponent, IconButtonComponent, GroupButtonComponent, SplitButtonComponent, GigglyTextBoxComponent],
-  imports: [CommonModule, FormsModule, BrowserModule], // Import CommonModule here
-  exports: [BreadcrumbComponent, GigglyDividerComponent, GigglyTooltipComponent, GigglySidebarComponent, GigglyTabComponent, GigglyTabsComponent, GigglyAccordianComponent, GigglyModalComponent, GigglyCardComponent, GigglyProgressBarComponent, GigglSnackbarComponent, GigglyAlertsComponent, GigglyFileUploadComponent, GigglyDatePickerComponent, GigglySliderComponent, GigglySwitchComponent, GigglyDropdownComponent, GigglyRadiobuttonComponent, GigglyCheckboxComponent, GigglyTextAreaComponent, GigglyButtonComponent, IconButtonComponent, GroupButtonComponent, SplitButtonComponent, GigglyTextBoxComponent],
+  declarations: [GigglyNavbarSidebarComponent, GigglyNavbarComponent, GigglyStepperComponent, BreadcrumbComponent, GigglyDividerComponent, GigglyTooltipComponent, GigglySidebarComponent, GigglyTabComponent, GigglyTabsComponent, GigglyAccordianComponent, GigglyModalComponent, GigglyCardComponent, GigglyProgressBarComponent, GigglSnackbarComponent, GigglyAlertsComponent, GigglyFileUploadComponent, GigglyDatePickerComponent, GigglySliderComponent, GigglySwitchComponent, GigglyDropdownComponent, GigglyRadiobuttonComponent, GigglyCheckboxComponent, GigglyTextAreaComponent, GigglyButtonComponent, IconButtonComponent, GroupButtonComponent, SplitButtonComponent, GigglyTextBoxComponent],
+  imports: [RouterModule, CommonModule, FormsModule, BrowserModule], // Import CommonModule here
+  exports: [GigglyNavbarSidebarComponent, GigglyNavbarComponent, GigglyStepperComponent, BreadcrumbComponent, GigglyDividerComponent, GigglyTooltipComponent, GigglySidebarComponent, GigglyTabComponent, GigglyTabsComponent, GigglyAccordianComponent, GigglyModalComponent, GigglyCardComponent, GigglyProgressBarComponent, GigglSnackbarComponent, GigglyAlertsComponent, GigglyFileUploadComponent, GigglyDatePickerComponent, GigglySliderComponent, GigglySwitchComponent, GigglyDropdownComponent, GigglyRadiobuttonComponent, GigglyCheckboxComponent, GigglyTextAreaComponent, GigglyButtonComponent, IconButtonComponent, GroupButtonComponent, SplitButtonComponent, GigglyTextBoxComponent],
 })
 export class GigglyModule {}

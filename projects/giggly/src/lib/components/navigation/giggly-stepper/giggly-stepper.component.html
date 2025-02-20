@@ -1,0 +1,13 @@
+<div class="giggly-stepper">
+    <div *ngFor="let step of steps; let i = index" class="step">
+      <!-- Step Circle & Label -->
+      <div class="step-container">
+        <div class="step-circle" [class.active]="i <= activeStep">{{ i + 1 }}</div>
+        <div class="step-label" [class.active]="i <= activeStep">{{ step.label }}</div>
+      </div>
+  
+      <!-- Step Connector Line -->
+      <div *ngIf="i < steps.length - 1" class="step-line" [class.active]="i < activeStep"></div>
+    </div>
+  </div>
+  

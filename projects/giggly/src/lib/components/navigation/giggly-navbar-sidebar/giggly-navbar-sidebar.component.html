@@ -1,0 +1,26 @@
+<div class="giggly-sidebar" [class.closed]="!isOpen">
+    <ul class="sidebar-menu">
+      <li *ngFor="let item of menuItems" class="menu-item" [class.has-children]="item.children?.length">
+        <a (click)="handleMenuClick(item)">
+          {{ item.label }}
+          <span *ngIf="item.children?.length" (click)="toggleSubMenu(item, $event)">▼</span>
+        </a>
+  
+        <ul *ngIf="item.children?.length && item.expanded" class="submenu level-1">
+          <li *ngFor="let child of item.children" class="submenu-item">
+            <a (click)="handleMenuClick(child)">
+              {{ child.label }}
+              <span *ngIf="child.children?.length" (click)="toggleSubMenu(child, $event)">▶</span>
+            </a>
+  
+            <ul *ngIf="child.children?.length && child.expanded" class="submenu level-2">
+              <li *ngFor="let subChild of child.children" class="submenu-item">
+                <a (click)="handleMenuClick(subChild)">{{ subChild.label }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
