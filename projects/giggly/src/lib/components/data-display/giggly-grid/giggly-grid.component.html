@@ -1,0 +1,29 @@
+<table class="giggly-table">
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns" (click)="sortColumn(col.field)">
+        {{ col.title }}
+        <span *ngIf="sortState.field === col.field">
+          {{ sortState.direction === 'asc' ? '🔼' : '🔽' }}
+        </span>
+      </th>
+    </tr>
+    <tr *ngIf="filterable">
+      <th *ngFor="let col of columns">
+        <input type="text" placeholder="Filter" (input)="filterData($event, col.field)">
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of displayedData">
+      <td *ngFor="let col of columns">{{ row[col.field] }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div class="pagination-container">
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">⬅️ Prev</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next ➡️</button>
+</div>

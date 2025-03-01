@@ -27,3 +27,5 @@ export * from './lib/components/navigation/breadcrumb/breadcrumb.component';
 export * from './lib/components/navigation/giggly-stepper/giggly-stepper.component';
 export * from './lib/components/navigation/giggly-navbar/giggly-navbar.component';
 export * from './lib/components/navigation/giggly-navbar-sidebar/giggly-navbar-sidebar.component';
+export * from './lib/components/data-display/giggly-grid/giggly-grid.component';
+export * from './lib/components/data-display/giggly-grid-col/giggly-grid-col.component';
