@@ -1,0 +1,15 @@
+<ul class="giggly-tree">
+    <li *ngFor="let node of treeData">
+      <span class="giggly-tree-node" (click)="toggleNode(node)" [class.selected]="node.selected">
+        <span *ngIf="node.children" class="toggle-icon">
+          {{ node.expanded ? '▼' : '▶' }}
+        </span>
+        <span (click)="selectNode(node)">{{ node.label }}</span>
+      </span>
+      
+      <ul *ngIf="node.expanded" class="giggly-tree-children">
+        <giggly-tree-view [treeData]="node.children ?? []" (nodeSelect)="nodeSelect.emit($event)"></giggly-tree-view>
+      </ul>
+    </li>
+  </ul>
+  

@@ -31,7 +31,6 @@ export class GigglyGridComponent {
     this.updatePagination();
   }
 
-  /** 🔄 Sorting Logic */
   sortColumn(field: string) {
     if (!this.sortable) return;
 
@@ -47,16 +46,14 @@ export class GigglyGridComponent {
     this.updatePagination();
   }
 
-  /** 🔍 Filtering Logic */
   filterData(event: any, field: string) {
     const filterValue = event.target.value.toLowerCase();
     this.filteredData = this.data.filter(item => item[field].toString().toLowerCase().includes(filterValue));
 
-    this.currentPage = 1; // Reset to first page after filtering
+    this.currentPage = 1
     this.updatePagination();
   }
 
-  /** 📄 Pagination Logic */
   updatePagination() {
     this.totalPages = Math.ceil(this.filteredData.length / this.pageSize);
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -74,7 +71,7 @@ export class GigglyGridComponent {
 
   ngAfterContentInit() {
     this.updateColumns();
-    this.gridColumns.changes.subscribe(() => this.updateColumns()); // Listen for changes
+    this.gridColumns.changes.subscribe(() => this.updateColumns());
   }
 
   private updateColumns() {
@@ -83,8 +80,4 @@ export class GigglyGridComponent {
       title: col.title,
     }));
   }
-
-
-  // here
-
 }
