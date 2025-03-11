@@ -1,0 +1,54 @@
+.giggly-badge {
+    display: flex; /* Ensure it is always displayed */
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    border-radius: 12px;
+    min-width: 20px;
+    height: 20px;
+    text-align: center;
+    position: absolute;
+    transform: translate(50%, -50%);
+    background-color: var(--primary-color, #4CAF50);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Slight elevation */
+  
+    &.primary {
+      background-color: var(--primary-color, #4CAF50);
+    }
+    
+    &.secondary {
+      background-color: var(--secondary-color, #2196F3);
+    }
+    
+    &.danger {
+      background-color: #e74c3c;
+    }
+    
+    &.success {
+      background-color: #2ecc71;
+    }
+  
+    &.top-right {
+      top: 5px;
+      right: 5px;
+    }
+  
+    &.top-left {
+      top: 5px;
+      left: 5px;
+    }
+  
+    &.bottom-right {
+      bottom: 5px;
+      right: 5px;
+    }
+  
+    &.bottom-left {
+      bottom: 5px;
+      left: 5px;
+    }
+  }
+  
