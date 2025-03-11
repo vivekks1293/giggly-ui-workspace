@@ -1,0 +1,5 @@
+<div class="giggly-avatar" [ngClass]="[size, shape]" [style.borderColor]="borderColor">
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="Avatar" />
+    <span *ngIf="!imageUrl">{{ initials }}</span>
+  </div>
+  
