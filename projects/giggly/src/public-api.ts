@@ -32,3 +32,4 @@ export * from './lib/components/data-display/giggly-grid-col/giggly-grid-col.com
 export * from './lib/components/data-display/giggly-treeview/giggly-treeview.component';
 export * from './lib/components/data-display/giggly-avatar/giggly-avatar.component';
 export * from './lib/components/data-display/giggly-badge/giggly-badge.component';
+export * from './lib/components/data-display/giggly-chips/giggly-chips.component';

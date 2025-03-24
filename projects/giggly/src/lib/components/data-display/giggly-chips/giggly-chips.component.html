@@ -1,0 +1,5 @@
+<div class="giggly-chip" [ngClass]="color">
+    <span class="chip-label">{{ label }}</span>
+    <span *ngIf="removable" class="chip-close" (click)="remove()">×</span>
+  </div>
+  
