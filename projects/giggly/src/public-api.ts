@@ -33,3 +33,4 @@ export * from './lib/components/data-display/giggly-treeview/giggly-treeview.com
 export * from './lib/components/data-display/giggly-avatar/giggly-avatar.component';
 export * from './lib/components/data-display/giggly-badge/giggly-badge.component';
 export * from './lib/components/data-display/giggly-chips/giggly-chips.component';
+export * from './lib/components/media/giggly-carousal/giggly-carousal.component';

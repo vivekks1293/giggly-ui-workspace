@@ -1,0 +1,19 @@
+<div class="giggly-carousel">
+    <div class="carousel-wrapper">
+        <div class="carousel-slide" *ngFor="let item of items; let i = index" [class.active]="i === currentIndex">
+            <ng-container *ngIf="item">
+                <img *ngIf="item.imageUrl" [src]="item.imageUrl" />
+                <ng-container *ngIf="!item.imageUrl">
+                    {{ item.content }}
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+
+    <button class="nav left" (click)="prev()">❮</button>
+    <button class="nav right" (click)="next()">❯</button>
+
+    <div class="dots">
+        <span *ngFor="let item of items; let i = index" [class.active]="i === currentIndex" (click)="goTo(i)"></span>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+.giggly-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+      position: relative;
+    }
+  
+    .carousel-slide {
+      flex: 0 0 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: #fdfdfd;
+      min-height: 250px;
+  
+      &.active {
+        display: flex;
+        opacity: 1;
+      }
+  
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        object-fit: cover;
+      }
+    }
+  
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 24px;
+      padding: 5px 12px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 2;
+  
+      &.left {
+        left: 10px;
+      }
+      &.right {
+        right: 10px;
+      }
+    }
+  
+    .dots {
+      text-align: center;
+      padding: 10px 0;
+  
+      span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.3s;
+  
+        &.active {
+          background-color: var(--primary-color, #4CAF50);
+        }
+      }
+    }
+  }
+  
