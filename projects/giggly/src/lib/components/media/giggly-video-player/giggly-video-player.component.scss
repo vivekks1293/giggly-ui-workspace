@@ -1,0 +1,19 @@
+.giggly-video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .giggly-video {
+    width: 100%;
+    border-radius: 8px;
+  }
+  

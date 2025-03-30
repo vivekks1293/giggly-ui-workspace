@@ -1,0 +1,32 @@
+.giggly-drag-list {
+    border: 2px dashed var(--primary-color, #4CAF50);
+    border-radius: 12px;
+    padding: 10px;
+    background: #fefefe;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .giggly-item {
+    padding: 10px;
+    margin: 8px 0;
+    background: #e0f7fa;
+    border-radius: 8px;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  
+    &:hover {
+      background: #b2ebf2;
+    }
+  
+    .drag-handle {
+      margin-right: 10px;
+      font-size: 18px;
+      color: #555;
+    }
+  }
+  

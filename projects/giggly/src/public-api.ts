@@ -34,3 +34,6 @@ export * from './lib/components/data-display/giggly-avatar/giggly-avatar.compone
 export * from './lib/components/data-display/giggly-badge/giggly-badge.component';
 export * from './lib/components/data-display/giggly-chips/giggly-chips.component';
 export * from './lib/components/media/giggly-carousal/giggly-carousal.component';
+export * from './lib/components/media/giggly-image-viewer/giggly-image-viewer.component';
+export * from './lib/components/media/giggly-video-player/giggly-video-player.component';
+export * from './lib/components/media/giggly-drag-list/giggly-drag-list.component';

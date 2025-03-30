@@ -1,0 +1,6 @@
+<div class="giggly-drag-list" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="giggly-item" *ngFor="let item of items" cdkDrag>
+      <span class="drag-handle">☰</span> {{ item }}
+    </div>
+  </div>
+  
