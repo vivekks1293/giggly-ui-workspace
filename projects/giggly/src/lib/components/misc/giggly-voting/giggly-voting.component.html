@@ -1,8 +1,11 @@
 <div class="voting-container">
     <h3 class="voting-question">{{ question }}</h3>
     
-    <div *ngIf="showTimeLeft" class="time-left">
+    <!-- <div *ngIf="showTimeLeft" class="time-left">
       {{ totalVotes$ | async }} votes • {{ timeLeftText }}
+    </div> -->
+    <div *ngIf="showTimeLeft" class="time-left">
+      {{ totalVotes$ | async }} Total Votes
     </div>
     
     <div class="options-container">
