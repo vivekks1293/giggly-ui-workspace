@@ -1,0 +1,31 @@
+<div class="voting-container">
+    <h3 class="voting-question">{{ question }}</h3>
+    
+    <!-- <div *ngIf="showTimeLeft" class="time-left">
+      {{ totalVotes$ | async }} votes • {{ timeLeftText }}
+    </div> -->
+    <div *ngIf="showTimeLeft" class="time-left">
+      {{ totalVotes$ | async }} Total Votes
+    </div>
+    
+    <div class="options-container">
+      <div *ngFor="let option of votingOptions$ | async; trackBy: trackByOptionId"
+           class="option"
+           [class.selected]="option.voted"
+           (click)="vote(option.id)">
+        
+        <div class="option-content">
+          <div class="option-text">{{ option.text }}</div>
+          
+          <div *ngIf="hasVoted" class="vote-info">
+            <span class="percentage">{{ option.percentage }}%</span>
+            <span *ngIf="option.votes > 0" class="vote-count">{{ option.votes }} votes</span>
+          </div>
+        </div>
+        
+        <div *ngIf="hasVoted" class="progress-container">
+          <div class="progress-bar" [style.width.%]="option.percentage"></div>
+        </div>
+      </div>
+    </div>
+  </div>
