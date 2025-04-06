@@ -1,0 +1,9 @@
+<div class="giggly-window">
+    <div class="giggly-header" (mousedown)="startDrag($event)">
+        <span>{{ title }}</span>
+        <button class="close-btn" (click)="close()">×</button>
+    </div>
+    <div class="giggly-body">
+        <ng-content></ng-content>
+    </div>
+</div>
