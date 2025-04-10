@@ -39,3 +39,4 @@ export * from './lib/components/media/giggly-video-player/giggly-video-player.co
 export * from './lib/components/media/giggly-drag-list/giggly-drag-list.component';
 export * from './lib/components/misc/giggly-voting/giggly-voting.component';
 export * from './lib/components/layouts/giggly-draggable-window/giggly-draggable-window.component';
+export * from './lib/components/misc/giggly-context-menu/giggly-context-menu.component';
