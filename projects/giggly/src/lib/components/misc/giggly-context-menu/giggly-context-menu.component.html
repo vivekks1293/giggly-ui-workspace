@@ -1,0 +1,9 @@
+<div class="giggly-context-menu" *ngIf="isVisible" [ngStyle]="{ top: posY + 'px', left: posX + 'px' }">
+    <ul>
+      <li *ngFor="let item of items" (click)="selectItem(item.action)">
+        <i *ngIf="item.icon" class="{{ item.icon }}"></i>
+        {{ item.label }}
+      </li>
+    </ul>
+  </div>
+  
