@@ -1,0 +1,12 @@
+<div [ngSwitch]="type" class="giggly-loader">
+    <div *ngSwitchCase="'dots'" class="giggly-dots-loader" [style.width]="size" [style.height]="size">
+      <span></span><span></span><span></span>
+    </div>
+  
+    <div *ngSwitchCase="'ring'" class="giggly-ring-loader" [style.width]="size" [style.height]="size"></div>
+  
+    <div *ngSwitchCase="'bubbles'" class="giggly-bubbles-loader" [style.width]="size" [style.height]="size">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  
