@@ -1,7 +1,9 @@
 <button
-  [ngClass]="variant"
+  [ngClass]="[variant, size]"
   [disabled]="disabled"
   (click)="onClickHandler($event)"
 >
-  <ng-content></ng-content>
+  <span class="button-content">
+    <ng-content></ng-content>
+  </span>
 </button>
