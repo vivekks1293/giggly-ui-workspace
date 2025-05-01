@@ -1,31 +1,39 @@
-<div class="split-button">
-    <!-- Primary Button -->
-    <button
-      [class]="variant"
-      [disabled]="disabled"
-      (click)="onClick.emit($event)"
-    >
-      {{ label }}
+<div class="split-button" [ngStyle]="customStyle">
+  <!-- Primary Button -->
+  <div class="split-button-row">
+    <button [class]="variant" [disabled]="disabled" (click)="onClick.emit($event)" [attr.aria-label]="label"
+      class="action-button">
+      <span class="button-content">
+        <ng-content select="[icon]"></ng-content>
+        <span class="label">{{ label }}</span>
+      </span>
     </button>
-  
+
     <!-- Dropdown Toggle -->
-    <button
-      [class]="variant"
-      [disabled]="disabled"
-      class="dropdown-toggle"
-      (click)="toggleDropdown()"
-    >
-      ▼
+    <button [class]="variant" [disabled]="disabled" class="dropdown-toggle" (click)="toggleDropdown($event)"
+      [attr.aria-expanded]="isOpen" [attr.aria-haspopup]="true" [attr.aria-label]="'Toggle ' + label + ' options'">
+      <span class="toggle-icon" [class.open]="isOpen">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </span>
     </button>
-  
-    <!-- Dropdown Menu -->
-    <ul *ngIf="isOpen" class="dropdown-menu">
-      <li
-        *ngFor="let option of options"
-        (click)="selectOption(option.action)"
-      >
-        {{ option.label }}
+  </div>
+
+
+  <!-- Dropdown Menu -->
+  <div class="dropdown-container" *ngIf="isOpen" [@dropdownAnimation]>
+    <ul class="dropdown-menu" role="menu" (clickOutside)="closeDropdown()">
+      <li *ngFor="let option of options" (click)="selectOption(option.action, $event)" role="menuitem" tabindex="0"
+        (keydown.enter)="selectOption(option.action, $event)">
+        <ng-container *ngIf="option.icon">
+          <span class="option-icon">
+            <ng-container *ngTemplateOutlet="option.icon"></ng-container>
+          </span>
+        </ng-container>
+        <span class="option-label">{{ option.label }}</span>
       </li>
     </ul>
   </div>
-  
+</div>

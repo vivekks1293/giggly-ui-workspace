@@ -1,90 +1,235 @@
+$primary-color-default: #3FAEA7;
+$primary-color: var(--primary-color, $primary-color-default);
+$primary-color-hover: darken($primary-color-default, 10%);
+$primary-color-active: darken($primary-color-default, 15%);
+$primary-color-disabled: transparentize($primary-color-default, 0.6);
+
+$secondary-color-default: #6A5ACD;
+$secondary-color: var(--secondary-color, $secondary-color-default);
+$secondary-color-hover: darken($secondary-color-default, 10%);
+$secondary-color-active: darken($secondary-color-default, 15%);
+$secondary-color-disabled: transparentize($secondary-color-default, 0.6);
+
+$danger-color-default: #FF6B6B;
+$danger-color: var(--danger-color, $danger-color-default);
+$danger-color-hover: darken($danger-color-default, 10%);
+$danger-color-active: darken($danger-color-default, 15%);
+$danger-color-disabled: transparentize($danger-color-default, 0.6);
+
+$border-radius: 8px;
+$animation-duration: 0.3s;
+$shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 10px rgba(0, 0, 0, 0.15);
+.split-button-row {
+  display: flex;
+  flex-direction: row;
+}
 .split-button {
-    display: inline-flex;
-    align-items: center;
+  display: flex;
+  position: relative;
+  font-family: var(--font-family, "Inter", sans-serif);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px #0000001a;
+  transition: all .3s ease;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all $animation-duration ease;
     position: relative;
-  
-    button {
-      padding: 10px 15px;
-      font-size: 14px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-  
-      &.primary {
-        background-color: var(--primary-color, #4caf50);
-        color: white;
-  
-        &:hover {
-          background-color: var(--primary-color-hover, #45a049);
-        }
-  
-        &:disabled {
-          background-color: var(--primary-color-disabled, #c8e6c9);
-          color: #a5d6a7;
-          cursor: not-allowed;
-        }
-      }
-  
-      &.secondary {
-        background-color: var(--secondary-color, #2196f3);
-        color: white;
-  
-        &:hover {
-          background-color: var(--secondary-color-hover, #1e88e5);
-        }
-  
-        &:disabled {
-          background-color: var(--secondary-color-disabled, #bbdefb);
-          color: #90caf9;
-          cursor: not-allowed;
-        }
-      }
-  
-      &.danger {
-        background-color: var(--danger-color, #f44336);
-        color: white;
-  
-        &:hover {
-          background-color: var(--danger-color-hover, #e53935);
-        }
-  
-        &:disabled {
-          background-color: var(--danger-color-disabled, #ffcdd2);
-          color: #ef9a9a;
-          cursor: not-allowed;
-        }
-      }
-  
-      &.dropdown-toggle {
-        border-left: 1px solid white;
-        padding-left: 10px;
-        padding-right: 10px;
+    overflow: hidden;
+
+    // Giggly button effect - subtle pulse on hover
+    &:hover:not(:disabled) {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120%;
+        height: 120%;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        animation: pulse 1s ease-out;
       }
     }
-  
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-  
-      li {
-        padding: 10px 15px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-  
-        &:hover {
-          background-color: #f4f4f4;
+
+    // Button variants
+    &.primary {
+      background-color: var(--primary-color, #3FAEA7);
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: var(--primary-color-hover, #35938D);
+        ;
+      }
+
+      &:active:not(:disabled) {
+        background-color: var(--primary-color-active, #076861);
+      }
+
+      &:disabled {
+        background-color: var(--primary-color-disabled, #9cbab8);
+        color: white;
+        cursor: not-allowed;
+      }
+    }
+
+    &.secondary {
+      background-color: var(--secondary-color, #6A5ACD);
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: var(--secondary-color-hover, #796ad7);
+      }
+
+      &:active:not(:disabled) {
+        background-color: var(--secondary-color-active, #1d0e7b);
+      }
+
+      &:disabled {
+        background-color: var(--secondary-color-disabled, #a09bc7);
+        color: white;
+        cursor: not-allowed;
+      }
+    }
+
+    &.danger {
+      background-color: $danger-color;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: $danger-color-hover;
+      }
+
+      &:active:not(:disabled) {
+        background-color: $danger-color-active;
+      }
+
+      &:disabled {
+        background-color: $danger-color-disabled;
+        color: white;
+        cursor: not-allowed;
+      }
+    }
+
+    &.action-button {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      flex: 1;
+
+      .button-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+    }
+
+    &.dropdown-toggle {
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+
+      .toggle-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform $animation-duration ease;
+
+        &.open {
+          transform: rotate(180deg);
         }
       }
     }
   }
-  
+
+  .dropdown-container {
+    // position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .dropdown-menu {
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $shadow-md;
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background-color $animation-duration ease;
+      font-size: 14px;
+      color: #333;
+
+      .option-icon {
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      &:hover {
+        background-color: #92c2be
+      }
+
+      &:active {
+        background-color: #738c8a
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+// Bounce animation for dropdown
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-10px);
+  }
+
+  70% {
+    transform: scale(1.05) translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

@@ -1,104 +1,262 @@
 button.icon-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+  letter-spacing: 0.5px;
   
+  i {
+    font-size: 20px;
+    margin-right: 10px;
+    transition: transform 0.4s ease;
+  }
+  
+  .button-label {
+    position: relative;
+    z-index: 2;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    
     i {
-      font-size: 18px;
-      margin-right: 8px;
+      transform: rotate(15deg) scale(1.2);
     }
-  
-    &:hover:not(:disabled) {
-      transform: scale(1.05);
+    
+    &::before {
+      transform: scaleX(1);
+      transform-origin: left;
     }
+  }
   
-    &:active:not(:disabled) {
-      transform: scale(0.95);
+  &:active:not(:disabled) {
+    transform: translateY(2px) scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+    filter: grayscale(0.5);
+  }
+  
+  .confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  // Primary variant
+  &.primary {
+    background: linear-gradient(45deg, #4caf50, #8bc34a);
+    color: white;
+    
+    &:hover {
+      background: linear-gradient(45deg, #45a049, #7cb342);
     }
-  
+    
     &:disabled {
+      background: linear-gradient(45deg, #c8e6c9, #dcedc8);
+      color: #a5d6a7;
+    }
+  }
+  
+  // Secondary variant
+  &.secondary {
+    background: linear-gradient(45deg, #2196f3, #03a9f4);
+    color: white;
+    
+    &:hover {
+      background: linear-gradient(45deg, #1e88e5, #039be5);
+    }
+    
+    &:disabled {
+      background: linear-gradient(45deg, #bbdefb, #b3e5fc);
+      color: #90caf9;
+    }
+  }
+  
+  // Danger variant
+  &.danger {
+    background: linear-gradient(45deg, #f44336, #ff5722);
+    color: white;
+    
+    &:hover {
+      background: linear-gradient(45deg, #e53935, #f4511e);
+    }
+    
+    &:disabled {
+      background: linear-gradient(45deg, #ffcdd2, #ffccbc);
+      color: #ef9a9a;
+    }
+  }
+  
+  // Success variant
+  &.success {
+    background: linear-gradient(45deg, #00c853, #00bfa5);
+    color: white;
+    
+    &:hover {
+      background: linear-gradient(45deg, #00b34a, #00ab94);
+    }
+    
+    &:disabled {
+      background: linear-gradient(45deg, #a7ffeb, #b9f6ca);
+      color: #69f0ae;
+    }
+  }
+  
+  // Playful variant
+  &.playful {
+    background: linear-gradient(45deg, #ff6ec7, #ffc371);
+    color: white;
+    animation: giggle 0.5s infinite alternate ease-in-out;
+    
+    &:hover {
+      animation: giggle-hover 0.3s infinite alternate ease-in-out;
+      background: linear-gradient(45deg, #ff8ebc, #ffdb93);
+    }
+    
+    &:active {
+      background: linear-gradient(45deg, #e65eaa, #e8bc83);
+      animation-duration: 0.2s;
+    }
+    
+    &:disabled {
+      background: linear-gradient(45deg, #ffe1f3, #fff4e1);
+      color: #ddd;
       cursor: not-allowed;
-      transform: none;
-    }
-  
-    &.primary {
-      background-color: var(--primary-color, #4caf50); /* Default green */
-      color: white;
-  
-      &:hover {
-        background-color: var(--primary-color-hover, #45a049); /* Darker green */
-      }
-  
-      &:disabled {
-        background-color: var(--primary-color-disabled, #c8e6c9); /* Light green */
-        color: #a5d6a7;
-      }
-    }
-  
-    &.secondary {
-      background-color: var(--secondary-color, #2196f3); /* Default blue */
-      color: white;
-  
-      &:hover {
-        background-color: var(--secondary-color-hover, #1e88e5); /* Darker blue */
-      }
-  
-      &:disabled {
-        background-color: var(--secondary-color-disabled, #bbdefb); /* Light blue */
-        color: #90caf9;
-      }
-    }
-  
-    &.danger {
-      background-color: var(--danger-color, #f44336); /* Default red */
-      color: white;
-  
-      &:hover {
-        background-color: var(--danger-color-hover, #e53935); /* Darker red */
-      }
-  
-      &:disabled {
-        background-color: var(--danger-color-disabled, #ffcdd2); /* Light red */
-        color: #ef9a9a;
-      }
-    }
-  
-    &.playful {
-      background: linear-gradient(45deg, #ff6ec7, #ffc371); /* Default gradient */
-      color: white;
-      animation: giggle 0.5s infinite alternate ease-in-out;
-  
-      &:hover {
-        animation: none;
-        background: linear-gradient(45deg, #ff8ebc, #ffdb93); /* Hover gradient */
-      }
-  
-      &:active {
-        background: linear-gradient(45deg, #e65eaa, #e8bc83); /* Active gradient */
-      }
-  
-      &:disabled {
-        background: linear-gradient(45deg, #ffe1f3, #fff4e1); /* Disabled gradient */
-        color: #ddd;
-        cursor: not-allowed;
-        animation: none;
-      }
+      animation: none;
     }
   }
   
-  @keyframes giggle {
-    0% {
-      transform: translateX(-2px);
+  // New candy variant
+  &.candy {
+    background: linear-gradient(45deg, #ff48a5, #ff7676, #ffbf69);
+    color: white;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    animation: color-cycle 3s infinite alternate;
+    
+    &:hover {
+      animation: color-cycle 1s infinite alternate;
+      border: 2px dashed white;
     }
-    100% {
-      transform: translateX(2px);
+    
+    &:disabled {
+      background: linear-gradient(45deg, #ffd1e8, #ffd1d1, #ffe8c9);
+      color: #ddd;
+      border: 2px dashed rgba(200, 200, 200, 0.5);
+      animation: none;
     }
   }
   
+  // New rainbow variant
+  &.rainbow {
+    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+    background-size: 1400% 100%;
+    color: white;
+    animation: rainbow-move 6s linear infinite;
+    
+    &:hover {
+      animation: rainbow-move 3s linear infinite;
+    }
+    
+    &:disabled {
+      background: linear-gradient(90deg, #ffcccc, #ffe0cc, #ffffcc, #ccffcc, #ccccff, #d7ccff, #e8ccff);
+      background-size: 1400% 100%;
+      color: #ddd;
+      animation: none;
+    }
+  }
+}
+
+@keyframes giggle {
+  0% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(2px) rotate(1deg);
+  }
+}
+
+@keyframes giggle-hover {
+  0% {
+    transform: translateX(-3px) translateY(-2px) rotate(-2deg);
+  }
+  100% {
+    transform: translateX(3px) translateY(-2px) rotate(2deg);
+  }
+}
+
+@keyframes color-cycle {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes rainbow-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+// Confetti animation styles
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: confetti-fall 3s ease forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(720deg);
+    opacity: 0;
+  }
+}

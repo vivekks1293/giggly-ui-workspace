@@ -1,8 +1,5 @@
-<button 
-  [ngClass]="['icon-button', variant]" 
-  [disabled]="disabled" 
-  (click)="onClickHandler($event)"
->
-  <i [class]="icon"></i>
-  <span *ngIf="label">{{ label }}</span>
+<button class="icon-button {{ variant }}" [disabled]="disabled" (click)="onClickHandler($event)">
+  <i class="giggly-icon {{ icon }}"></i>
+  <span class="button-label">{{ label }}</span>
+  <div class="confetti-container" *ngIf="!disabled"></div>
 </button>
