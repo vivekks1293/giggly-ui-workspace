@@ -1,13 +1,40 @@
-<div class="text-input">
-    <label *ngIf="label" [class.disabled]="disabled">{{ label }}</label>
-    <input
-      [type]="type"
-      [placeholder]="placeholder"
-      [(ngModel)]="value"
-      [disabled]="disabled"
-      (input)="onInputChange($event)"
-      [class.invalid]="!isValid"
-    />
-    <p class="error-message" *ngIf="!isValid">{{ errorMessage }}</p>
+<div class="giggly-text-input">
+  <label *ngIf="label" [class.disabled]="disabled" class="giggly-label">
+    {{ label }}
+    <span class="giggly-asterisk" *ngIf="required">*</span>
+  </label>
+  
+  <div class="input-container" [class.jiggling]="isJiggling" [class.focused]="isFocused">
+    <div class="input-wrapper">
+      <input
+        [type]="type"
+        [placeholder]="placeholder"
+        [(ngModel)]="value"
+        [disabled]="disabled"
+        (input)="onInputChange($event)"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        [class.invalid]="!isValid"
+        #inputElement
+      />
+      <div class="giggly-face" [class.happy]="isValid && value" [class.sad]="!isValid">
+        <div class="eyes">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+    </div>
+    
+    <div class="giggly-balloon" *ngIf="!isValid">
+      <div class="balloon-content">
+        {{ errorMessage }}
+      </div>
+      <div class="balloon-arrow"></div>
+    </div>
   </div>
   
+  <div class="character-counter" *ngIf="showCharCount">
+    {{ value.length }} / {{ maxLength }}
+  </div>
+</div>
