@@ -125,9 +125,7 @@ export class GigglyTextBoxComponent implements ControlValueAccessor {
   }
   
   playGiggleSound(type: 'focus' | 'invalid' | 'valid'): void {
-    // This would connect to an audio service in a real implementation
     console.log(`Playing ${type} giggle sound`);
-    // In a real implementation, you'd play actual sounds here
   }
   
   focus(): void {
