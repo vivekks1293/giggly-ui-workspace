@@ -1,13 +1,38 @@
-<div class="giggly-textarea">
-    <label *ngIf="label" [class.disabled]="disabled">{{ label }}</label>
+<div class="giggly-textarea" [ngClass]="{'focused': isFocused, 'giggle-low': giggleLevel === 'low', 'giggle-medium': giggleLevel === 'medium', 'giggle-high': giggleLevel === 'high'}">
+  <label *ngIf="label" [class.disabled]="disabled" class="giggly-label">
+    {{ label }} <span class="giggly-emoji" *ngIf="giggleColors">{{ giggleEmojis[0] }}</span>
+  </label>
+  
+  <div class="textarea-wrapper">
     <textarea
+      #textareaElement
       [(ngModel)]="value"
       [placeholder]="placeholder"
       [rows]="rows"
       [disabled]="disabled"
       (input)="onInput($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
       [class.invalid]="!isValid"
     ></textarea>
-    <p class="error-message" *ngIf="!isValid">{{ errorMessage }}</p>
+    
+    <div class="character-bubbles" *ngIf="giggleAnimation && value.length > 0">
+      <span 
+        class="character-bubble" 
+        *ngFor="let char of value.slice(-5).split(''); let i = index"
+        [style.animation-delay]="i * 0.1 + 's'"
+      >{{ char }}</span>
+    </div>
   </div>
   
+  <div class="controls-footer">
+    <p class="error-message" *ngIf="!isValid">
+      <span class="sad-emoji">😢</span> {{ errorMessage }}
+    </p>
+    
+    <div class="char-count" [ngClass]="{'warning': characterCount > maxRows * 20, 'success': isValid && characterCount > 0}">
+      <span *ngIf="characterCount === 0">Start typing to see the magic!</span>
+      <span *ngIf="characterCount > 0">{{ characterCount }} characters</span>
+    </div>
+  </div>
+</div>
