@@ -1,55 +1,239 @@
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(-10px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100px) rotate(360deg);
+  }
+}
+
+@keyframes rainbow {
+  0% { border-color: #ff0000; }
+  16.67% { border-color: #ff8000; }
+  33.33% { border-color: #ffff00; }
+  50% { border-color: #00ff00; }
+  66.67% { border-color: #0000ff; }
+  83.33% { border-color: #8000ff; }
+  100% { border-color: #ff0000; }
+}
+
 .giggly-checkbox {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    font-family: 'Comic Sans MS', sans-serif;
-    user-select: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  user-select: none;
+  position: relative;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
   
-    input {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--primary-color, #4caf50);
-      border-radius: 4px;
-      display: inline-block;
-      margin-right: 10px;
-      transition: all 0.3s ease;
+  &:hover:not(.disabled) {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
   
-      &:checked {
-        background-color: var(--primary-color, #4caf50);
-        border-color: var(--primary-color, #4caf50);
-        position: relative;
-  
-        &::after {
-          content: '✔';
-          font-size: 16px;
-          font-weight: bold;
-          color: white;
-          position: absolute;
-          left: 4px;
-          top: -2px;
-        }
-      }
-  
-      &:hover {
-        border-color: var(--primary-color-hover, #45a049);
-      }
-  
-      &:disabled {
-        border-color: #ccc;
-        background-color: #f0f0f0;
-        cursor: not-allowed;
-      }
+  &.hovered:not(.disabled) {
+    .checkbox-visual {
+      transform: scale(1.05);
     }
-  
-    label {
-      font-size: 16px;
-      color: var(--text-label-color, #333);
-    }
-  
-    &.disabled {
-      color: #a5a5a5;
-      cursor: not-allowed;
+    
+    .giggly-label {
+      transform: translateX(2px);
     }
   }
   
+  .checkbox-container {
+    position: relative;
+    margin-right: 12px;
+  }
+  
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkbox-visual {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--primary-color, #4caf50);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    &.checked {
+      background-color: var(--primary-color, #4caf50);
+      
+      .check-icon {
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 0.3s ease-in-out;
+      }
+    }
+    
+    &:hover:not([disabled]) {
+      border-color: var(--primary-color-hover, #45a049);
+      transform: scale(1.05);
+    }
+  }
+  
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    
+    .checkbox-visual {
+      border-color: #ccc;
+      background-color: #f0f0f0;
+    }
+    
+    .giggly-label {
+      color: #a5a5a5;
+    }
+  }
+  
+  .giggly-label {
+    font-size: 16px;
+    color: var(--text-label-color, #333);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.01em;
+    
+    .emoji-reaction {
+      margin-left: 8px;
+      font-size: 18px;
+      display: inline-block;
+      animation: pulse 0.5s ease-in-out;
+    }
+  }
+  
+  /* Theme styles */
+  &.theme-bubbly {
+    .checkbox-visual {
+      border-radius: 50%;
+      
+      &.checked {
+        border-width: 3px;
+      }
+    }
+  }
+  
+  &.theme-rainbow {
+    .checkbox-visual {
+      border-width: 3px;
+      
+      &.checked {
+        animation: rainbow 2s linear infinite;
+        background: linear-gradient(
+          45deg, 
+          #ff0000, #ff8000, #ffff00, 
+          #00ff00, #0000ff, #8000ff
+        );
+        background-size: 600% 600%;
+        animation: rainbow 5s ease infinite;
+      }
+    }
+  }
+  
+  /* Bubble animations */
+  .bubble-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    
+    .bubble {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 12px;
+      animation: bubbleFloat 1s ease-out forwards;
+      pointer-events: none;
+    }
+  }
+  
+  /* Confetti */
+  .confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 0;
+      opacity: 1;
+      animation: confettiFall 2s ease-in-out forwards;
+      
+      @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+          left: percentage(random(100) / 100);
+          top: percentage(random(50) / 100);
+          background-color: nth(
+            #ff0000 #ff8000 #ffff00 #00ff00 #0000ff #8000ff #ff00ff, 
+            random(7)
+          );
+          transform: rotate(random(360) + deg);
+          animation-delay: random(10) / 10 + s;
+          animation-duration: 1s + random(10) / 10 + s;
+          
+          // Random shapes
+          @if $i % 3 == 0 {
+            border-radius: 50%; // Circle
+          } @else if $i % 3 == 1 {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%); // Triangle
+          } @else {
+            // Square by default
+          }
+        }
+      }
+    }
+  }
+}

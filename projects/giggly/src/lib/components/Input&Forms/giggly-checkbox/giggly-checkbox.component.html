@@ -1,10 +1,51 @@
-<div class="giggly-checkbox" [class.disabled]="disabled">
-    <input
+<div class="giggly-checkbox" 
+     [class.disabled]="disabled"
+     [class.hovered]="hovered"
+     [ngClass]="'theme-' + theme"
+     [@bounce]="bounceState"
+     [@wiggle]="wiggleState"
+     (mouseenter)="onHover()" 
+     (mouseleave)="onHoverEnd()"
+     [style.--primary-color]="color">
+  
+  <!-- Audio element for giggly sound -->
+  <audio #audioElement>
+    <source src="assets/sounds/giggly-sound.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Checkbox input with wrapper for better click handling -->
+  <div class="checkbox-container" (click)="!disabled && toggleCheck()">
+    <input 
       type="checkbox"
-      id="giggly-checkbox"
+      [id]="uniqueId"
       [checked]="checked"
       [disabled]="disabled"
-      (change)="toggleCheck()"
     />
-    <label for="giggly-checkbox">{{ label }}</label>
+    <div class="checkbox-visual" [class.checked]="checked">
+      <span class="check-icon" *ngIf="checked">{{ emojiIcon }}</span>
+    </div>
   </div>
+
+  <!-- Label that also triggers the checkbox -->
+  <label [for]="uniqueId" class="giggly-label" (click)="!disabled && toggleCheck()">
+    {{ label }}
+    <span class="emoji-reaction" *ngIf="checked">{{ currentEmoji }}</span>
+  </label>
+
+  <!-- Animated bubbles for bubbly theme -->
+  <div class="bubble-container" *ngIf="theme === 'bubbly'">
+    <div class="bubble" 
+         *ngFor="let bubble of bubbles"
+         [style.left.px]="bubble.x"
+         [style.top.px]="bubble.y"
+         [style.width.px]="bubble.size"
+         [style.height.px]="bubble.size">
+      {{ bubble.emoji }}
+    </div>
+  </div>
+
+  <!-- Confetti overlay -->
+  <div class="confetti-container" *ngIf="confettiActive">
+    <div class="confetti" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"></div>
+  </div>
+</div>
