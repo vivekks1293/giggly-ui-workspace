@@ -1,19 +1,31 @@
 <div class="giggly-radio-group" [class]="direction">
-    <label 
-      *ngFor="let option of options" 
-      class="giggly-radio-label" 
-      [class.disabled]="disabled"
-    >
-      <input
-        type="radio"
-        [name]="name"
-        [value]="option.value"
-        [checked]="option.value === selectedValue"
-        [disabled]="disabled"
-        (change)="selectOption(option.value)"
-      />
-      <span class="giggly-radio-check"></span>
+  <label
+    *ngFor="let option of options; trackBy: trackByValue"
+    class="giggly-radio-label"
+    [class.disabled]="disabled"
+    [class.wobble-on-hover]="wobbleOnHover"
+    [class.selected]="option.value === selectedValue"
+    (click)="onLabelClick($event)"
+  >
+    <input
+      type="radio"
+      [name]="name"
+      [value]="option.value"
+      [checked]="option.value === selectedValue"
+      [disabled]="disabled"
+      (change)="selectOption(option.value)"
+    />
+    <span class="giggly-radio-check">
+      <span class="giggly-radio-inner"></span>
+      <span class="sparkles" *ngIf="showSparkles && option.value === selectedValue">
+        <span class="sparkle sparkle-1">✨</span>
+        <span class="sparkle sparkle-2">⭐</span>
+        <span class="sparkle sparkle-3">💫</span>
+      </span>
+    </span>
+    <span class="giggly-label-text">
+      <span *ngIf="option.emoji" class="giggly-emoji">{{ option.emoji }}</span>
       {{ option.label }}
-    </label>
-  </div>
-  
+    </span>
+  </label>
+</div>
