@@ -1,72 +1,265 @@
+@keyframes gigglyWobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(1deg) scale(1.05); }
+  75% { transform: rotate(-1deg) scale(1.05); }
+}
+
+@keyframes gigglyBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-8px) scale(1.1); }
+  60% { transform: translateY(-4px) scale(1.05); }
+}
+
+@keyframes sparkleFloat {
+  0% { 
+    transform: translate(0, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+    transform: translate(var(--float-x, 10px), var(--float-y, -10px)) rotate(180deg) scale(1);
+  }
+  100% { 
+    transform: translate(calc(var(--float-x, 10px) * 2), calc(var(--float-y, -10px) * 2)) rotate(360deg) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 5px var(--primary-color, #4caf50); }
+  50% { box-shadow: 0 0 20px var(--primary-color, #4caf50), 0 0 25px var(--primary-color, #4caf50); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
 .giggly-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  
+  &.horizontal {
+    flex-direction: row;
+  }
+  
+  &.vertical {
+    flex-direction: column;
+  }
+  
+  .giggly-radio-label {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  
-    &.horizontal {
-      flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-label-color, #333);
+    user-select: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    padding: 8px 12px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+    
+    &.wobble-on-hover:hover:not(.disabled) {
+      animation: gigglyWobble 0.6s ease-in-out;
+      transform: scale(1.05);
     }
-  
-    &.vertical {
-      flex-direction: column;
+    
+    &.bounce-animation {
+      animation: gigglyBounce 0.6s ease-in-out;
     }
-  
-    .giggly-radio-label {
+    
+    &.selected {
+      background: linear-gradient(45deg, 
+        rgba(var(--primary-color-rgb, 76, 175, 80), 0.1), 
+        rgba(var(--primary-color-rgb, 76, 175, 80), 0.2));
+      transform: scale(1.02);
+      
+      .giggly-label-text {
+        color: var(--primary-color, #4caf50);
+        font-weight: 700;
+      }
+    }
+    
+    &.disabled {
+      color: #a5a5a5;
+      cursor: not-allowed;
+      opacity: 0.6;
+      
+      .giggly-radio-check {
+        border-color: #d0d0d0;
+      }
+    }
+    
+    input {
+      appearance: none;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    
+    .giggly-radio-check {
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--primary-color, #4caf50);
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      margin-right: 12px;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      background: linear-gradient(45deg, #fff, #f8f9fa);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      
+      .giggly-radio-inner {
+        width: 14px;
+        height: 14px;
+        background: linear-gradient(45deg, var(--primary-color, #4caf50), var(--primary-color-hover, #45a049));
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 0 10px rgba(var(--primary-color-rgb, 76, 175, 80), 0.4);
+      }
+      
+      .sparkles {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1px;
+        height: 1px;
+        
+        .sparkle {
+          position: absolute;
+          font-size: 12px;
+          animation: sparkleFloat 1.5s ease-out infinite;
+          
+          &.sparkle-1 {
+            --float-x: 15px;
+            --float-y: -15px;
+            animation-delay: 0s;
+          }
+          
+          &.sparkle-2 {
+            --float-x: -12px;
+            --float-y: -18px;
+            animation-delay: 0.3s;
+          }
+          
+          &.sparkle-3 {
+            --float-x: 8px;
+            --float-y: -22px;
+            animation-delay: 0.6s;
+          }
+        }
+      }
+    }
+    
+    input:checked + .giggly-radio-check {
+      animation: pulseGlow 1s ease-in-out infinite;
+      border-color: var(--primary-color-hover, #45a049);
+      transform: scale(1.1);
+      
+      .giggly-radio-inner {
+        transform: translate(-50%, -50%) scale(1);
+        animation: heartbeat 1s ease-in-out infinite;
+      }
+    }
+    
+    &:hover:not(.disabled) .giggly-radio-check {
+      border-color: var(--primary-color-hover, #45a049);
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(var(--primary-color-rgb, 76, 175, 80), 0.3);
+    }
+    
+    .giggly-label-text {
       display: flex;
       align-items: center;
-      cursor: pointer;
-      font-family: 'Comic Sans MS', sans-serif;
-      position: relative;
-      font-size: 16px;
-      color: var(--text-label-color, #333);
-      user-select: none;
       transition: all 0.3s ease;
-  
-      &.disabled {
-        color: #a5a5a5;
-        cursor: not-allowed;
+      
+      .giggly-emoji {
+        font-size: 18px;
+        margin-right: 6px;
+        display: inline-block;
+        transition: transform 0.3s ease;
       }
-  
-      input {
-        appearance: none;
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        opacity: 0;
-        cursor: pointer;
-      }
-  
+    }
+    
+    &:hover:not(.disabled) .giggly-emoji {
+      transform: scale(1.2) rotate(10deg);
+    }
+    
+    &.selected .giggly-emoji {
+      animation: gigglyWobble 2s ease-in-out infinite;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .giggly-radio-group {
+    gap: 15px;
+    
+    .giggly-radio-label {
+      font-size: 14px;
+      padding: 6px 10px;
+      
       .giggly-radio-check {
         width: 20px;
         height: 20px;
-        border: 2px solid var(--primary-color, #4caf50);
-        border-radius: 50%;
-        display: inline-block;
-        position: relative;
         margin-right: 10px;
-        transition: all 0.3s ease;
-  
-        &::after {
-          content: '';
+        
+        .giggly-radio-inner {
           width: 12px;
           height: 12px;
-          background: var(--primary-color, #4caf50);
-          border-radius: 50%;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) scale(0);
-          transition: all 0.3s ease;
         }
-      }
-  
-      input:checked + .giggly-radio-check::after {
-        transform: translate(-50%, -50%) scale(1);
-      }
-  
-      &:hover .giggly-radio-check {
-        border-color: var(--primary-color-hover, #45a049);
       }
     }
   }
-  
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .giggly-radio-group .giggly-radio-label {
+    .giggly-radio-check {
+      border-width: 2px;
+      box-shadow: none;
+    }
+    
+    &.selected {
+      background: var(--primary-color, #4caf50);
+      color: white;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .giggly-radio-group .giggly-radio-label {
+    &.wobble-on-hover:hover:not(.disabled),
+    &.bounce-animation {
+      animation: none;
+    }
+    
+    input:checked + .giggly-radio-check {
+      animation: none;
+      
+      .giggly-radio-inner {
+        animation: none;
+      }
+    }
+    
+    .sparkles .sparkle {
+      animation: none;
+      opacity: 1;
+      transform: translate(10px, -10px);
+    }
+  }
+}

@@ -15,16 +15,19 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class GigglyRadiobuttonComponent {
-  @Input() options: { label: string; value: any }[] = [];  // Radio button options
-  @Input() name: string = 'giggly-radio-group';  // Radio button group name
-  @Input() disabled: boolean = false;  // Disable the radio group
-  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';  // Layout direction
-
+@Input() options: { label: string; value: any; emoji?: string }[] = [];
+  @Input() name: string = 'giggly-radio-group';
+  @Input() disabled: boolean = false;
+  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
+  @Input() wobbleOnHover: boolean = true;
+  @Input() bounceOnSelect: boolean = true;
+  @Input() showSparkles: boolean = true;
   @Output() valueChange = new EventEmitter<any>();
+  @Output() giggle = new EventEmitter<any>(); // New giggly event!
 
   selectedValue: any = null;
+  private gigglyMessages = ['Hehe!', 'Yay!', '✨', 'Woo!', '🎉', 'Nice!'];
 
-  // ControlValueAccessor functions
   onChange = (value: any) => { };
   onTouched = () => { };
 
@@ -33,6 +36,23 @@ export class GigglyRadiobuttonComponent {
       this.selectedValue = value;
       this.onChange(value);
       this.valueChange.emit(this.selectedValue);
+      
+      // Emit a giggly message
+      const randomMessage = this.gigglyMessages[Math.floor(Math.random() * this.gigglyMessages.length)];
+      this.giggle.emit({ value, message: randomMessage });
+      
+      // Add bounce effect
+      if (this.bounceOnSelect) {
+        this.triggerBounce(value);
+      }
+    }
+  }
+
+  private triggerBounce(value: any): void {
+    const element = document.querySelector(`input[value="${value}"]`)?.closest('.giggly-radio-label');
+    if (element) {
+      element.classList.add('bounce-animation');
+      setTimeout(() => element.classList.remove('bounce-animation'), 600);
     }
   }
 
@@ -50,5 +70,13 @@ export class GigglyRadiobuttonComponent {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  onLabelClick(event: Event): void {
+    this.onTouched();
+  }
+
+  trackByValue(index: number, option: { label: string; value: any; emoji?: string }): any {
+    return option.value;
   }
 }
